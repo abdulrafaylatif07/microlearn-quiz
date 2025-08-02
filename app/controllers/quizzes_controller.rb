@@ -7,10 +7,15 @@ class QuizzesController < ApplicationController
   end
 
   def new
+    question_count = params[:question_count].to_i
+    question_count = 1 if question_count < 1
+    question_count = 10 if question_count > 10
+
     @quiz = current_user.quizzes.build
-    1.times do
-      question = @quiz.questions.build
-      4.times { question.options.build }
+
+    question_count.times do
+        question = @quiz.questions.build
+        4.times { question.options.build }
     end
   end
 
@@ -23,19 +28,28 @@ class QuizzesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @quiz = current_user.quizzes.find(params[:id])
+  end
+
   def update
+    @quiz = current_user.quizzes.find(params[:id])
     if @quiz.update(quiz_params)
-      redirect_to quizzes_path, notice: "Updated!"
+        redirect_to quizzes_path, notice: "Quiz updated successfully!"
     else
-      render :edit
+        render :edit
     end
   end
 
   def destroy
     @quiz.destroy
-    redirect_to quizzes_path, notice: "Deleted!"
+    redirect_to quizzes_path, notice: "Quiz deleted!"
   end
+
+  def show
+    @quiz = Quiz.find(params[:id])
+  end
+
 
   private
 
@@ -45,7 +59,7 @@ class QuizzesController < ApplicationController
 
   def quiz_params
     params.require(:quiz).permit(:title, :description,
-      questions_attributes: [:id, :content, :_destroy,
-        options_attributes: [:id, :content, :correct, :_destroy]])
+    questions_attributes: [:id, :content, :_destroy,
+      options_attributes: [:id, :content, :correct, :_destroy]])
   end
 end
