@@ -1,195 +1,368 @@
-<div class="min-h-screen bg-gray-50">
-  <div class="max-w-4xl mx-auto px-6 py-8">
+<div class="min-h-screen" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative;">
+  <!-- Background Animation -->
+
+  <div style="max-width: 1000px; margin: 0 auto; padding: 2rem; position: relative; z-index: 10; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+    
     <!-- Header Section -->
-    <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-8">
-      <div class="px-8 py-6">
-        <div class="flex items-center justify-between">
-          <div>
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Edit Quiz</h1>
-            <p class="text-gray-600">Make changes to your quiz content and settings</p>
-          </div>
-          
-          <!-- Quiz Info Badge -->
-          <div class="flex items-center space-x-2">
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
-              </svg>
-              Editing Mode
-            </span>
-          </div>
+    <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-radius: 24px; padding: 3rem; margin-bottom: 2rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); animation: slideUp 0.6s ease-out;">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem;">
+        <div>
+          <h1 style="font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; margin: 0;">Edit Quiz</h1>
+          <p style="font-size: 1.2rem; color: #6b7280; margin: 0;">Make changes to your quiz content and settings</p>
+        </div>
+        
+        <!-- Quiz Info Badge -->
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="display: inline-flex; align-items: center; padding: 0.5rem 1rem; border-radius: 16px; font-size: 0.9rem; font-weight: 600; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);">
+            <svg style="width: 16px; height: 16px; margin-right: 0.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+            </svg>
+            Editing Mode
+          </span>
         </div>
       </div>
     </div>
 
     <!-- Main Edit Form -->
-    <%= form_with model: @quiz, class: "space-y-8" do |f| %>
+    <%= form_with model: @quiz, style: "display: flex; flex-direction: column; gap: 2rem;" do |f| %>
+      
       <!-- Quiz Details -->
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
-        <div class="px-8 py-6">
-          <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-            <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-            Quiz Details
-          </h2>
-          
-          <div class="grid grid-cols-1 gap-6">
-            <div>
-              <%= f.label :title, class: "block text-sm font-medium text-gray-700 mb-2" %>
-              <%= f.text_field :title, 
-                  class: "block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900",
-                  placeholder: "Enter quiz title..." %>
-            </div>
+      <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-radius: 20px; padding: 2.5rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); animation: fadeInUp 0.6s ease-out both; animation-delay: 0.1s;">
+        <h2 style="font-size: 1.5rem; font-weight: 600; color: #2d3748; margin-bottom: 1.5rem; display: flex; align-items: center;">
+          <svg style="width: 20px; height: 20px; margin-right: 0.5rem; color: #667eea;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          Quiz Details
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+          <div>
+            <%= f.label :title, style: "display: block; font-size: 0.9rem; font-weight: 500; color: #4a5568; margin-bottom: 0.5rem;" %>
+            <%= f.text_field :title, 
+                style: "display: block; width: 100%; padding: 0.75rem 1rem; border: 2px solid #e2e8f0; border-radius: 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); font-size: 1rem; color: #2d3748; background: white; transition: all 0.3s ease;",
+                placeholder: "Enter quiz title...",
+                onfocus: "this.style.borderColor='#667eea'; this.style.boxShadow='0 0 0 3px rgba(102, 126, 234, 0.1)';",
+                onblur: "this.style.borderColor='#e2e8f0'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.05)';" %>
+          </div>
 
-            <div>
-              <%= f.label :description, class: "block text-sm font-medium text-gray-700 mb-2" %>
-              <%= f.text_area :description, 
-                  rows: 3,
-                  class: "block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 resize-none",
-                  placeholder: "Describe your quiz..." %>
-            </div>
+          <div>
+            <%= f.label :description, style: "display: block; font-size: 0.9rem; font-weight: 500; color: #4a5568; margin-bottom: 0.5rem;" %>
+            <%= f.text_area :description, 
+                rows: 3,
+                style: "display: block; width: 100%; padding: 0.75rem 1rem; border: 2px solid #e2e8f0; border-radius: 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); font-size: 1rem; color: #2d3748; background: white; resize: none; transition: all 0.3s ease;",
+                placeholder: "Describe your quiz...",
+                onfocus: "this.style.borderColor='#667eea'; this.style.boxShadow='0 0 0 3px rgba(102, 126, 234, 0.1)';",
+                onblur: "this.style.borderColor='#e2e8f0'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.05)';" %>
           </div>
         </div>
       </div>
 
       <!-- Questions Section -->
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
-        <div class="px-8 py-6">
-          <div class="flex items-center justify-between mb-6">
-            <h2 class="text-xl font-semibold text-gray-900 flex items-center">
-              <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-              Questions & Answers
-            </h2>
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
-              <%= pluralize(@quiz.questions.size, 'Question') %>
-            </span>
-          </div>
+      <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-radius: 20px; padding: 2.5rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); animation: fadeInUp 0.6s ease-out both; animation-delay: 0.2s;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #2d3748; display: flex; align-items: center; margin: 0;">
+            <svg style="width: 20px; height: 20px; margin-right: 0.5rem; color: #9333ea;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            Questions & Answers
+          </h2>
+          <span style="display: inline-flex; align-items: center; padding: 0.5rem 1rem; border-radius: 16px; font-size: 0.9rem; font-weight: 600; background: linear-gradient(135deg, #9333ea, #7c3aed); color: white; box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);">
+            <%= pluralize(@quiz.questions.size, 'Question') %>
+          </span>
+        </div>
 
-          <div class="space-y-8">
-            <%= f.fields_for :questions do |qf| %>
-              <div class="border border-gray-200 rounded-lg p-6 bg-gradient-to-r from-gray-50 to-blue-50">
-                <!-- Question Header -->
-                <div class="flex items-center mb-6">
-                  <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full flex items-center justify-center text-lg font-bold">
-                    <%= qf.index + 1 %>
-                  </div>
-                  <h3 class="ml-3 text-lg font-semibold text-gray-900">Question <%= qf.index + 1 %></h3>
-                  
-                  <!-- Status Indicator -->
-                  <div class="ml-auto">
-                    <% if qf.object.content.present? %>
-                      <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        Complete
-                      </span>
-                    <% else %>
-                      <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                          <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                        </svg>
-                        Incomplete
-                      </span>
-                    <% end %>
-                  </div>
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+          <%= f.fields_for :questions do |qf| %>
+            <div style="border: 2px solid rgba(102, 126, 234, 0.1); border-radius: 16px; padding: 2rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.03), rgba(168, 85, 247, 0.03)); transition: all 0.3s ease; animation: fadeInUp 0.6s ease-out both; animation-delay: <%= (qf.index + 1) * 0.1 %>s;" class="question-card">
+              
+              <!-- Question Header -->
+              <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                <div style="flex-shrink: 0; width: 40px; height: 40px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700;">
+                  <%= qf.index + 1 %>
                 </div>
-
-                <!-- Question Content -->
-                <div class="mb-6">
-                  <%= qf.label :content, "Question Text", class: "block text-sm font-medium text-gray-700 mb-2" %>
-                  <%= qf.text_field :content, 
-                      class: "block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white text-lg",
-                      placeholder: "Enter your question..." %>
-                </div>
-
-                <!-- Options Section -->
-                <div>
-                  <h4 class="text-sm font-medium text-gray-700 mb-4 flex items-center">
-                    <svg class="w-4 h-4 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                    Answer Options
-                    <span class="ml-2 text-xs text-gray-500">(Check the correct answer)</span>
-                  </h4>
-                  
-                  <div class="space-y-3">
-                    <%= qf.fields_for :options do |of| %>
-                      <div class="flex items-center space-x-3 bg-white border-2 border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors duration-200">
-                        <!-- Option Letter -->
-                        <div class="flex-shrink-0 w-8 h-8 bg-gray-100 text-gray-700 rounded-full flex items-center justify-center text-sm font-bold">
-                          <%= (65 + of.index).chr %>
-                        </div>
-                        
-                        <!-- Option Input -->
-                        <div class="flex-1">
-                          <%= of.text_field :content, 
-                              class: "block w-full px-3 py-2 border-0 focus:ring-0 text-gray-900 placeholder-gray-500 text-lg",
-                              placeholder: "Enter option #{(65 + of.index).chr}..." %>
-                        </div>
-                        
-                        <!-- Correct Answer Toggle -->
-                        <div class="flex items-center bg-gray-50 rounded-lg px-3 py-2">
-                          <%= of.check_box :correct, 
-                              class: "w-5 h-5 text-green-600 bg-white border-gray-300 rounded focus:ring-green-500 focus:ring-2" %>
-                          <%= of.label :correct, "Correct", 
-                              class: "ml-2 text-sm font-medium text-gray-700 cursor-pointer select-none" %>
-                        </div>
-                      </div>
-                    <% end %>
-                  </div>
-                  
-                  <!-- Helper Text -->
-                  <div class="mt-3 p-3 bg-blue-50 rounded-lg">
-                    <p class="text-xs text-blue-700 flex items-center">
-                      <svg class="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <h3 style="margin-left: 1rem; font-size: 1.25rem; font-weight: 600; color: #2d3748; margin: 0;">Question <%= qf.index + 1 %></h3>
+                
+                <!-- Status Indicator -->
+                <div style="margin-left: auto;">
+                  <% if qf.object.content.present? %>
+                    <span style="display: inline-flex; align-items: center; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; font-weight: 500; background: linear-gradient(135deg, #10b981, #059669); color: white;">
+                      <svg style="width: 12px; height: 12px; margin-right: 0.25rem;" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                       </svg>
-                      Make sure to check at least one correct answer for each question. You can have multiple correct answers if needed.
-                    </p>
-                  </div>
+                      Complete
+                    </span>
+                  <% else %>
+                    <span style="display: inline-flex; align-items: center; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; font-weight: 500; background: linear-gradient(135deg, #f59e0b, #d97706); color: white;">
+                      <svg style="width: 12px; height: 12px; margin-right: 0.25rem;" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                      </svg>
+                      Incomplete
+                    </span>
+                  <% end %>
                 </div>
               </div>
-            <% end %>
-          </div>
+
+              <!-- Question Content -->
+              <div style="margin-bottom: 1.5rem;">
+                <%= qf.label :content, "Question Text", style: "display: block; font-size: 0.9rem; font-weight: 500; color: #4a5568; margin-bottom: 0.5rem;" %>
+                <%= qf.text_field :content, 
+                    style: "display: block; width: 100%; padding: 1rem 1.25rem; border: 2px solid #e2e8f0; border-radius: 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); font-size: 1.1rem; color: #2d3748; background: white; transition: all 0.3s ease;",
+                    placeholder: "Enter your question...",
+                    onfocus: "this.style.borderColor='#667eea'; this.style.boxShadow='0 0 0 3px rgba(102, 126, 234, 0.1)';",
+                    onblur: "this.style.borderColor='#e2e8f0'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.05)';" %>
+              </div>
+
+              <!-- Options Section -->
+              <div>
+                <h4 style="font-size: 0.9rem; font-weight: 500; color: #4a5568; margin-bottom: 1rem; display: flex; align-items: center;">
+                  <svg style="width: 16px; height: 16px; margin-right: 0.5rem; color: #6b7280;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                  Answer Options
+                  <span style="margin-left: 0.5rem; font-size: 0.8rem; color: #6b7280;">(Check the correct answer)</span>
+                </h4>
+                
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                  <%= qf.fields_for :options do |of| %>
+                    <div style="display: flex; align-items: center; gap: 0.75rem; background: white; border: 2px solid #f1f5f9; border-radius: 12px; padding: 1rem; transition: all 0.3s ease;" class="option-row">
+                      <!-- Option Letter -->
+                      <div style="flex-shrink: 0; width: 32px; height: 32px; background: linear-gradient(135deg, #f1f5f9, #e2e8f0); color: #4a5568; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 600;">
+                        <%= (65 + of.index).chr %>
+                      </div>
+                      
+                      <!-- Option Input -->
+                      <div style="flex: 1;">
+                        <%= of.text_field :content, 
+                            style: "display: block; width: 100%; padding: 0.75rem 1rem; border: 0; font-size: 1rem; color: #2d3748; background: transparent;",
+                            placeholder: "Enter option #{(65 + of.index).chr}..." %>
+                      </div>
+                      
+                      <!-- Correct Answer Toggle -->
+                      <div style="display: flex; align-items: center; background: rgba(16, 185, 129, 0.05); border-radius: 8px; padding: 0.5rem 0.75rem;">
+                        <%= of.check_box :correct, 
+                            style: "width: 18px; height: 18px; color: #10b981; background: white; border: 2px solid #d1d5db; border-radius: 4px;" %>
+                        <%= of.label :correct, "Correct", 
+                            style: "margin-left: 0.5rem; font-size: 0.9rem; font-weight: 500; color: #065f46; cursor: pointer;" %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                
+                <!-- Helper Text -->
+                <div style="margin-top: 1rem; padding: 1rem; background: rgba(59, 130, 246, 0.05); border-radius: 12px;">
+                  <p style="font-size: 0.85rem; color: #1e40af; display: flex; align-items: flex-start; line-height: 1.5; margin: 0;">
+                    <svg style="width: 16px; height: 16px; margin-right: 0.5rem; flex-shrink: 0; margin-top: 2px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Make sure to check at least one correct answer for each question. You can have multiple correct answers if needed.
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
 
       <!-- Save Section -->
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
-        <div class="px-8 py-6">
-          <div class="flex items-center justify-between">
-            <div>
-              <h3 class="text-lg font-semibold text-gray-900 flex items-center">
-                <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                Save Changes
-              </h3>
-              <p class="text-sm text-gray-600 mt-1">Review your changes and update the quiz when ready.</p>
-            </div>
-            
-            <div class="flex items-center space-x-4"> 
-              <%= f.submit "Update Quiz",
-                   class: "inline-flex items-center px-8 py-3 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 transition-all duration-200 shadow-md hover:shadow-lg" %>
-            </div>
+      <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-radius: 20px; padding: 2.5rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); animation: fadeInUp 0.6s ease-out both; animation-delay: 0.4s;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 600; color: #2d3748; display: flex; align-items: center; margin: 0;">
+              <svg style="width: 20px; height: 20px; margin-right: 0.5rem; color: #10b981;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Save Changes
+            </h3>
+            <p style="font-size: 0.95rem; color: #6b7280; margin-top: 0.25rem; margin-bottom: 0;">Review your changes and update the quiz when ready.</p>
+          </div>
+          
+          <div style="display: flex; align-items: center; gap: 1rem;"> 
+            <%= f.submit "Update Quiz",
+                 style: "display: inline-flex; align-items: center; padding: 1rem 2rem; background: linear-gradient(135deg, #f59e0b, #d97706); color: white; font-weight: 600; border-radius: 12px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4); border: none; cursor: pointer; font-size: 1rem;",
+                 onmouseover: "this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(245, 158, 11, 0.6)';",
+                 onmouseout: "this.style.transform='translateY(0px)'; this.style.boxShadow='0 4px 15px rgba(245, 158, 11, 0.4)';" %>
           </div>
         </div>
       </div>
     <% end %>
 
     <!-- Bottom Navigation -->
-    <div class="mt-8 flex items-center justify-center">
+    <div style="margin-top: 2rem; display: flex; align-items: center; justify-content: center; animation: fadeInUp 0.6s ease-out both; animation-delay: 0.5s;">
       <%= link_to quiz_path(@quiz), 
-          class: "inline-flex items-center px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors duration-200" do %>
-        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          style: "display: inline-flex; align-items: center; padding: 0.75rem 1rem; color: rgba(255, 255, 255, 0.8); transition: all 0.3s ease; text-decoration: none; border-radius: 8px;",
+          onmouseover: "this.style.color='white'; this.style.background='rgba(255, 255, 255, 0.1)';",
+          onmouseout: "this.style.color='rgba(255, 255, 255, 0.8)'; this.style.background='transparent';" do %>
+        <svg style="width: 16px; height: 16px; margin-right: 0.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
         </svg>
         Back to Quiz View
       <% end %>
     </div>
   </div>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .question-card:hover {
+      border-color: rgba(102, 126, 234, 0.2) !important;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(168, 85, 247, 0.05)) !important;
+    }
+    
+    .option-row:hover {
+      border-color: #cbd5e1 !important;
+      background: #f8fafc !important;
+    }
+    
+    input[type="text"]:focus,
+    textarea:focus {
+      outline: none !important;
+    }
+    
+    input[type="checkbox"]:checked {
+      background: #10b981 !important;
+      border-color: #10b981 !important;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      div[style*="max-width: 1000px"] {
+        padding: 1rem !important;
+      }
+      
+      div[style*="padding: 3rem"] {
+        padding: 2rem !important;
+      }
+      
+      div[style*="padding: 2.5rem"] {
+        padding: 1.5rem !important;
+      }
+      
+      h1[style*="font-size: 3rem"] {
+        font-size: 2.25rem !important;
+      }
+      
+      div[style*="gap: 2rem"][style*="justify-content: space-between"] {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        text-align: center !important;
+      }
+      
+      div[style*="padding: 2rem"] {
+        padding: 1.25rem !important;
+      }
+      
+      div[style*="gap: 0.75rem"] .option-row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+      
+      div[style*="gap: 0.75rem"] .option-row > div:last-child {
+        align-self: center !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h2[style*="font-size: 1.5rem"] {
+        font-size: 1.25rem !important;
+      }
+      
+      h3[style*="font-size: 1.25rem"] {
+        font-size: 1.1rem !important;
+      }
+      
+      input[style*="font-size: 1.1rem"] {
+        font-size: 1rem !important;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth animations
+      const elements = document.querySelectorAll('[style*="animation"]');
+      
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      elements.forEach(element => {
+        observer.observe(element);
+      });
+
+      // Enhanced focus states for form inputs
+      const inputs = document.querySelectorAll('input[type="text"], textarea');
+      inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+          this.style.transform = 'translateY(-1px)';
+        });
+        
+        input.addEventListener('blur', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+
+      // Checkbox enhancement
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+          const row = this.closest('.option-row');
+          if (this.checked) {
+            row.style.borderColor = '#10b981';
+            row.style.background = 'rgba(16, 185, 129, 0.05)';
+          } else {
+            row.style.borderColor = '#f1f5f9';
+            row.style.background = 'white';
+          }
+        });
+        
+        // Set initial state
+        if (checkbox.checked) {
+          const row = checkbox.closest('.option-row');
+          row.style.borderColor = '#10b981';
+          row.style.background = 'rgba(16, 185, 129, 0.05)';
+        }
+      });
+
+      // Form validation feedback
+      const form = document.querySelector('form');
+      if (form) {
+        form.addEventListener('submit', function() {
+          const submitBtn = form.querySelector('input[type="submit"]');
+          if (submitBtn) {
+            submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            submitBtn.value = 'Updating...';
+            submitBtn.disabled = true;
+          }
+        });
+      }
+    });
+  </script>
 </div>
